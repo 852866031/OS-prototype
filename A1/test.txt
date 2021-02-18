@@ -1,7 +1,0 @@
-help
-set x 10
-set y 5
-print x
-set x 66
-print x
-print y
