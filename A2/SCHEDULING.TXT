@@ -1,0 +1,104 @@
+This is the first time output:
+
+$ exec sched1.txt sched2.txt sched3.txt
+COMMAND                            DESCRIPTION
+help                               Displays all the commands
+quit                               Exits / terminates the shell
+set VAR STRING                     Assigns a value to shell memory
+print VAR                          Displays the STRING assigned to VAR
+run SCRIPT.TXT                     Executes the file SCRIPT.TXT
+exec prog1 prog2 prog3             Executes up to 3 concurrent programs provided as arguments
+detail.on                          Turn on detail mode for exec
+detail.off                         Turn off detail mode for exec
+a3
+a3
+b3
+a3
+b3
+b3
+c3
+c3
+d3
+c3
+d3
+d3
+CPU cycles elapsed: 530
+2nd to 5th time: 
+CPU cycles elapsed: 523
+CPU cycles elapsed: 647
+CPU cycles elapsed: 610
+CPU cycles elapsed: 788
+So the average is: 619.6
+
+Change quanta from 2 to 5:
+first time output:
+$ exec sched1.txt sched2.txt sched3.txt
+COMMAND                            DESCRIPTION
+help                               Displays all the commands
+quit                               Exits / terminates the shell
+set VAR STRING                     Assigns a value to shell memory
+print VAR                          Displays the STRING assigned to VAR
+run SCRIPT.TXT                     Executes the file SCRIPT.TXT
+exec prog1 prog2 prog3             Executes up to 3 concurrent programs provided as arguments
+detail.on                          Turn on detail mode for exec
+detail.off                         Turn off detail mode for exec
+a2
+a3
+a3
+b3
+c3
+d3
+b3
+c3
+d3
+b3
+c3
+d3
+CPU cycles elapsed: 1670
+2nd to 5th:
+CPU cycles elapsed: 1447
+CPU cycles elapsed: 1667
+CPU cycles elapsed: 1404
+CPU cycles elapsed: 1329
+So the average is: 1503.4
+
+Change quanta to 20:
+first time output:
+$ exec sched1.txt sched2.txt sched3.txt
+COMMAND                            DESCRIPTION
+help                               Displays all the commands
+quit                               Exits / terminates the shell
+set VAR STRING                     Assigns a value to shell memory
+print VAR                          Displays the STRING assigned to VAR
+run SCRIPT.TXT                     Executes the file SCRIPT.TXT
+exec prog1 prog2 prog3             Executes up to 3 concurrent programs provided as arguments
+detail.on                          Turn on detail mode for exec
+detail.off                         Turn off detail mode for exec
+a1
+b1
+c1
+d1
+a2
+b2
+c2
+d2
+a3
+b3
+c3
+d3
+CPU cycles elapsed: 903
+2nd to 5th time output:
+CPU cycles elapsed: 1095
+CPU cycles elapsed: 1162
+CPU cycles elapsed: 1060
+CPU cycles elapsed: 1363
+So the average is: 1116.6
+
+The output is different since when quanta increase, 
+print in each file is executed before any other file change its value
+So we can see a2 printed in quanta 5 but not in quanta 2
+and we can see a1 printed in quanta 20 but not in quanta 5 and quanta 2
+
+We can observe that quanta 2 time < quanta 20 time < quanta 5 time 
+quanta 20 is faster than quanta 5 since there are less task switch using time
+quanta 5 is fastest since the wait time is the smallest

@@ -1,0 +1,8 @@
+set a a2
+set b b2
+set c c2
+set d d2
+print a
+print b
+print c
+print d
