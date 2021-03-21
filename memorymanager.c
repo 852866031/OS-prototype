@@ -42,7 +42,7 @@ void loadPage(int pageNumber, FILE *f, int frameNumber){
         else ram[frameNumber*4+i]=NULL;
     }
     if(detail()) printf("-> loaded successfully\n");
-    if(detail()) printFrame(frameNumber);
+    //if(detail()) printFrame(frameNumber);
 }
 
 int findFrame(){
@@ -68,7 +68,7 @@ int updatePageTable(struct PCB *p, int pageNumber, int frameNumber, int victimFr
     if(detail()) printf("-> updating page table\n");
     if(frameNumber<0) {
         if(detail()) printf("-> setting pageNumber %d to VictimFrame %d\n", pageNumber, victimFrame);
-        p->pageTable[pageNumber]=frameNumber;
+        p->pageTable[pageNumber]=victimFrame;
         updateVictimPCB(victimFrame);
     }
     else{

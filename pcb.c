@@ -34,15 +34,16 @@ int ReadyLength(){
 
 void printPageTable(struct PCB *pcb){
     printf("-> current PCB page table is :\n");
-    for(int i=0; i<10; i++){
-        if(pcb->pageTable[i]<0) break;
+    for(int i=0; i<pcb->pages_max; i++){
         printf("Page: %d ---> Frame: %d\n", i, pcb->pageTable[i]);
     }
 }
 
 void terminatePCB(struct PCB *pcb){
     if(detail()) printf("-> Terminating current PCB\n");
-    for(int i=0; i<pcb->pages_max; i++) unloadFrame(pcb->pageTable[i]);
+    for(int i=0; i<10; i++) {
+        if(pcb->pageTable[i]>=0) unloadFrame(pcb->pageTable[i]);
+    }
     fclose(pcb->file);
     free(pcb);
     if(detail()) printf("-> Terminated\n");

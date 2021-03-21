@@ -1,10 +1,30 @@
-set y 20
+set y line1
 print y
-set x 20
-print x
-set z 20
-print z
-set a 20
-print a
-set b 20
-print b
+set y line3
+print y
+set y line5
+print y
+set y line7
+print y
+set y line9
+print y
+set y line11
+print y
+set y line13
+print y
+set y line15
+print y
+set y line17
+print y
+set y line19
+print y
+set y line21
+print y
+set y line23
+print y
+set y line25
+print y
+set y line27
+print y
+set y line29
+print y

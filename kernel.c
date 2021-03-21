@@ -18,6 +18,7 @@ int scheduler(){
         assign_head_to_cpu();
         cpu->IP=cpu->cur_PCB->pageTable[cpu->cur_PCB->PC_page]*4;
         //Copy the PC from the PCB into the IP of the CPU.
+        //note that cpu->IP can be less then 0, when there is a hole in the pagetable
         int result=run();
         if(result==1) {
             cpu->cur_PCB=NULL;
