@@ -1,0 +1,94 @@
+Ielp
+mount folder1 50 30
+echo test write into file
+write file1 [file1 in folder1]
+write file2 [file2 in folder1]
+write file3 [file3 in folder1]
+write file4 [file4 in folder1]
+write file5 [file5 in folder1]
+info
+echo test open another mount
+mount folder2 10 20
+write fileA [fileA in folder2]
+write file2 [file2 in folder2]
+write fileC [fileC in folder2]
+info
+echo test rewind and read
+rewind fileA
+rewind file1
+read fileA here
+print here
+read file2 this
+print this
+close file2
+read file2 this
+print this
+info
+echo test open a partition that already exists
+mount folder1 10 10
+info
+read file1 here
+print here
+read file2 here
+print here
+read file3 here
+print here
+read file4 here
+print here
+read file5 here
+print here
+info
+echo test case when active file table is full
+write file6 [file6 in folder1]
+info
+echo test close a file
+close file1
+write file6 [file6 in folder1]
+rewind file6
+read file6 here
+print here
+close file6
+echo test whether close put the file pointer back to 0 and write into multiple blocks
+write file1 [file1 in folder1 overwrite this line takes 2]
+write file1 [file1 in folder1 line3]
+rewind file1
+read file1 here
+print here
+read file1 here
+print here
+read file1 here
+print here
+close file1
+close file2
+close file3
+close file4
+close file5
+info
+write file7 [file7 in folder1]
+write file8 [file8 in folder1]
+write file9 [file9 in folder1]
+write file10 [file10 in folder1]
+write file11 [file11 in folder1]
+close file7
+close file8
+close file9
+close file10
+close file11
+info
+write file12 [file12 in folder1]
+write file13 [file13 in folder1]
+write file14 [file14 in folder1]
+write file15 [file15 in folder1]
+write file16 [file16 in folder1]
+info
+echo test mount the same partition close all files and preserve infomation and rewind all files
+mount folder1 10 10
+info
+write file17 [file17 in folder1]
+write file18 [file18 in folder1]
+write file19 [file19 in folder1]
+write file20 [file20 in folder1]
+echo test when fat is full
+info
+write file21 [file21 in folder1]
+quit

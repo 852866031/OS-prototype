@@ -5,6 +5,7 @@
 #include"ram.h"
 #include"cpu.h"
 #include"shell.h"
+#include"DISK_driver.h"
 
 int detailMode=0;
 int detail(){return detailMode;}
@@ -37,12 +38,14 @@ int kernel(){
     shellUI();
     free(cpu);
     destoryReady();
+    destoryIO();
     return 0;
 }
 
 void boot(){
     initializeRAM();
     initializeCPU();
+    initIO();
     system("rm -r BackingStore\n");
     system("mkdir BackingStore\n");
 }

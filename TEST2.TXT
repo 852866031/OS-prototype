@@ -1,0 +1,24 @@
+echo test write into multiple blocks once
+mount folder3 10 5
+write file1 [this will takes 5 blocks]
+info
+write file2 [2 blocks]
+info
+rewind file1
+read file1 here
+print here
+echo test seek
+seek file1 5
+write file1 [two blocks]
+info
+rewind file2 
+rewind file1 
+info 
+seek file1 4
+info
+write file3 [two blocks]
+info
+close file3
+write file4 [not gonna happen]
+info
+quit
